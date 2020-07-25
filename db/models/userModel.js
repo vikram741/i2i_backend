@@ -13,19 +13,31 @@ const userSchema = mongo.Schema({
         required:true,
         minlength:3
     },
-    phone:
+    mobile:
     {
         type:String,
         required:true,
         minlength:10,
         maxlength:10
     },
+    age:
+    {
+        type:Number,
+        required:true
+    },
     password:{
         type:String,
         required:true,
         minlength:8 
     },
-    session:[]
+    uploaded: [
+        {
+            bookid:{type:String, required:true},
+            version:{type:String, required:true},
+            description:{type:String},
+            audiofile:{type:String}
+        }
+    ]
 })
 
 module.exports = mongo.model('User',userSchema);
