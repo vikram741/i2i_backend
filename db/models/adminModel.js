@@ -1,6 +1,6 @@
 const mongo = require('mongoose')
 
-const userSchema = mongo.Schema({
+const adminSchema = mongo.Schema({
     email:{
         type:String,
         required:true,
@@ -8,10 +8,10 @@ const userSchema = mongo.Schema({
         trim:true,
         unique:true
     },
-    name:{
+    password:{
         type:String,
         required:true,
-        minlength:3
+        minlength:8 
     },
     mobile:
     {
@@ -20,18 +20,9 @@ const userSchema = mongo.Schema({
         minlength:10,
         maxlength:10
     },
-    age:
-    {
-        type:Number,
-        required:true
-    },
-    password:{
-        type:String,
-        required:true,
-        minlength:8 
-    },
-    uploaded: [
+    requests:[
         {
+            userid:{type:String,required:true},
             bookid:{type:String, required:true},
             version:{type:String, required:true},
             description:{type:String},
@@ -40,4 +31,4 @@ const userSchema = mongo.Schema({
     ]
 })
 
-module.exports = mongo.model('User',userSchema);
+module.exports = mongo.model('Admin',adminSchema);
